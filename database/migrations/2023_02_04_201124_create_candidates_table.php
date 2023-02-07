@@ -17,12 +17,20 @@ class CreateCandidatesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('fullname');
+            $table->integer('age');
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('website')->nullable();
             $table->string('qualification');
+            $table->string('photo');
+            $table->string('experience');
+            $table->string('current_salary');
+            $table->string('expected_salary');
+            $table->string('country');
+            $table->string('city');
+            $table->string('description');
 
-
+            
 
         });
     }

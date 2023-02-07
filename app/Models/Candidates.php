@@ -11,10 +11,19 @@ class Candidates extends Model
     {
         return $this->morphToMany(Skill::class, 'skillable');
     }
-    public function category()
+    public function languages()
     {
-        return $this->morphOne('App\Category', 'categorizable');
+        return $this->hasMany(CandidateLanguages::class);
     }
-
+    public function experiences(){
+        return $this->hasMany(CandidateExperiences::class);
+    }
+    public function educations(){
+        return $this->hasMany(CandidateEducations::class);
+    }
+    public function socialNetworks()
+    {
+        return $this->morphMany(SocialNetworks::class, 'socialable');
+    }
     use HasFactory;
 }

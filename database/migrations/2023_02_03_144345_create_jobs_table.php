@@ -28,9 +28,11 @@ class CreateJobsTable extends Migration
             $table->string('email');
             $table->string('website')->nullable();
             $table->text('description')->nullable()->default('text');
-            $table->date('start_date')->nullable()->default(new DateTime());
-            $table->date('end_date')->nullable()->default(new DateTime());
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->string('cover_photo');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

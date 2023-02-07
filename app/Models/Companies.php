@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Companies extends Model
 {
+    protected $fillable = [
+        'name', 'phone', 'email','country', 'city', 'address','description', 'company_logo'
+    ];
+
+    public function socialNetworks()
+    {
+        return $this->morphMany(SocialNetworks::class, 'socialable');
+    }
+
     use HasFactory;
 }

@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class PricingTypes extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'type_name'
+    ];
+    
+    public function pricings()
+    {
+        return $this->hasMany(Pricings::class);
+    }
 }

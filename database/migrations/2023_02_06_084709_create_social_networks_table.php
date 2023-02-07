@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompaniesTable extends Migration
+class CreateSocialNetworksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('social_networks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('phone');
-            $table->string('email')->unique();
-            $table->string('country');
-            $table->string('city');
-            $table->string('address');
-            $table->text('description');
-            $table->string('company_logo');
+            $table->string('url');
+            $table->unsignedBigInteger('socialable_id');
+            $table->string('socialable_type');
         });
     }
 
@@ -34,6 +30,6 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('social_networks');
     }
 }

@@ -9,12 +9,11 @@ class Jobs extends Model
 {
     public function skills()
     {
-        return $this->morphToMany(Skill::class, 'skillable');
+        return $this->morphToMany(Skills::class, 'skillable');
     }
     public function category()
     {
-        return $this->morphOne('App\Category', 'categorizable');
+        return $this->belongsTo(Categories::class,'category_id');
     }
-
     use HasFactory;
 }
