@@ -19,7 +19,9 @@ use App\Http\Controllers\API\CategoryController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('candidates',function(){
-    return response()->json(['message'=>'Hello world!']);
+
+Route::group(['prefix'=>'category'],function(){
+    Route::get('/',[CategoryController::class,'showCategories']);
+    Route::get('{id}',[CategoryController::class,'getCategoryById']);
 });
-Route::get('categories',[CategoryController::class,'showCategories']);
+
