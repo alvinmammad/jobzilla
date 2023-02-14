@@ -20,8 +20,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix'=>'category'],function(){
-    Route::get('/',[CategoryController::class,'showCategories']);
-    Route::get('{id}',[CategoryController::class,'getCategoryById']);
-});
+// Route::group(['prefix'=>'category'],function(){
+//     Route::get('/',[CategoryController::class,'all']);
+//     // Route::get('{id}',[CategoryController::class,'findByID']);
+//     // Route::post('/create',[CategoryController::class,'create']);
+// });
+
+Route::resource('categories', CategoryController::class);
+// Route::get('category/{id}',[CategoryController::class],'findByID');
 
